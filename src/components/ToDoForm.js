@@ -5,6 +5,12 @@ function ToDoForm(props){
 
     const handleSubmit=(e)=>{
         e.preventDefault();
+
+        props.onSubmit({
+            id: Math.floor(Math.random() * 10000),
+            text: input
+        })
+
         setInput('');
     }
 
@@ -12,7 +18,7 @@ function ToDoForm(props){
         setInput(e.target.value);
     }
     return(
-        <form className='toDo-form'>
+        <form className='toDo-form' onSubmit={handleSubmit}>
             <input type="text" placeholder="Add a to do" value={input} name="text" className="toDo-input"
             onChange={handleChange}/>
                 <button className="toDo-button">Add something to do</button>
